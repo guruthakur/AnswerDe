@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration</h2>
+
+
+<div>
+    <input type="text" id="txtemail"/>
+    <input type="password" id="txtpass" />
+    <input type="text" id="txtname" />
+    <input type="text" id="txtcontact" />
+    <input id="Register" type="button" value="Submit" onclick="RegisterUser()"/>
+</div>
+<script type="text/javascript">
+    function RegisterUser() {
+        debugger;
+        var postData = {
+            "UserEmail": $("#txtemail").val(),
+            "UserPassword": $("#txtpass").val(),
+            "UserName": $("#txtname").val(),
+            "Contact": $("#txtcontact").val(),
+        }
+        $.ajax({
+            url: "/User/Registration",
+            type: "post",
+            data: postData
+        }).done(function (response) {
+            console.log(response);
+        });
+    }
+   
+</script>
